@@ -6,41 +6,36 @@ const initialState = {
   hr: "",
 };
 
-export const InputForm = ({ addToTaskList }) => {
+export const InputForm = ({ addToList }) => {
   const [newInfo, setNewInfo] = useState(initialState);
 
   const handleOnChange = (e) => {
-    const { value, name } = e.target;
+    const { name, value } = e.target;
+    console.log(name, value);
 
     setNewInfo({
       ...newInfo,
       [name]: value,
     });
-    // console.log(newInfo);
-
-    //.console.log(`name is ${name}, value is ${value}`);
-    // console.log(e);
+    console.log(newInfo);
   };
-
-  //console.log(newInfo);
+  console.log(newInfo);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(newInfo);
-    addToTaskList(newInfo);
+    addToList(newInfo);
   };
 
   return (
     <div>
-      {newInfo.task}
       <Form onSubmit={handleOnSubmit}>
         <Row className="g-3">
           <Col md={7}>
             <Form.Control
               name="task"
               placeholder="Task..."
-              onChange={handleOnChange}
               required
+              onChange={handleOnChange}
             />
           </Col>
 
@@ -49,8 +44,8 @@ export const InputForm = ({ addToTaskList }) => {
               name="hr"
               placeholder="hours"
               type="number"
-              onChange={handleOnChange}
               required
+              onChange={handleOnChange}
             />
           </Col>
 

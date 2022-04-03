@@ -1,18 +1,17 @@
 import "./App.css";
 import { InputForm } from "./components/form/InputForm";
 import { Title } from "./components/title/Title";
-import { Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { TaskList } from "./components/task-list/TaskList";
 import { useState } from "react";
+import { BadList } from "./components/task-list/BadList";
 
 const App = () => {
   const [taskList, setTaskList] = useState([]);
 
-  //state to store all the task lists
-  const addToTaskList = (taskObj) => {
+  const addToList = (taskObj) => {
+    console.log(taskObj);
     setTaskList([...taskList, taskObj]);
-    //console.log(taskObj);
-    // console.log(taskList);
   };
   console.log(taskList);
 
@@ -20,10 +19,26 @@ const App = () => {
     <div className="wrapper">
       <Container>
         <Title />
-        <InputForm addToTaskList={addToTaskList} />
+        <InputForm addToList={addToList} />
         <hr />
+        <Row>
+          <Col md="6">
+            <TaskList taskList={taskList} />
+          </Col>
+
+          <Col md="6">
+            <BadList />
+          </Col>
+        </Row>
         {/* Task list components */}
-        <TaskList taskList={taskList} />
+        <Row>
+          <Col>
+            <h3 className="mt-5 bg-light">
+              {" "}
+              The total allocated hours is 15hrs
+            </h3>
+          </Col>
+        </Row>
       </Container>
     </div>
   );
