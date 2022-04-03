@@ -6,7 +6,7 @@ export const FormRow = ({ taskList }) => {
   return (
     <div>
       {taskList.map((str, index) => (
-        <tr className="bg-light">
+        <tr>
           <td>
             <Form.Check type="checkbox" label="" />
           </td>
