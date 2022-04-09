@@ -12,29 +12,32 @@ const App = () => {
   const [taskList, setTaskList] = useState([]);
   const [badList, setBadList] = useState([]);
 
+  // const deleteTask = () => {
+  //   return window.confirm("Are you sure you want to delete this task?");
+  // };
+
   // console.log(taskList);
 
   //remove item from the task list
   const removeFromTaskList = (i) => {
     const filteredArg = taskList.filter((item, index) => index !== i);
-    // console.log(filteredArg);
     setTaskList(filteredArg);
   };
 
   const removeFromBadList = (i) => {
     const filteredArg = badList.filter((item, index) => index !== i);
-
     setBadList(filteredArg);
   };
 
   const shiftToBadList = (i) => {
     //get the item that to be shifted
-    //add the item in the bad list
-    //remove the item the task lsit
     const item = taskList[i];
-    // setTaskList(item);
+    //add the item in the bad list
     setBadList([...badList, item]);
+    //remove the item the task lsit
+    // setTaskList(item);
     removeFromTaskList(i);
+    console.log("the arrow is clicked!");
   };
 
   const shiftToTaskList = (i) => {

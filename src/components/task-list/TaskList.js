@@ -21,7 +21,14 @@ export const TaskList = ({ taskList, removeFromTaskList, shiftToBadList }) => {
               <td className="text-end">
                 <Button
                   variant="outline-danger"
-                  onClick={() => removeFromTaskList(i)}
+                  onClick={() => {
+                    if (
+                      window.confirm(
+                        "Are you sure you want to delete this task?"
+                      )
+                    )
+                      return removeFromTaskList(i);
+                  }}
                 >
                   <i className="fa-solid fa-trash-can"></i>
                 </Button>{" "}

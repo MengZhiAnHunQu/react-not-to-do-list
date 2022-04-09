@@ -16,6 +16,7 @@ export const InputForm = ({ addToTaskList }) => {
     setNewInfo({
       ...newInfo,
       [name]: value,
+      // [name]:name==="hr"?+value:value
     });
     console.log(newInfo);
   };

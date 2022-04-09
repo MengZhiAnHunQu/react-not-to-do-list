@@ -25,7 +25,14 @@ export const BadList = ({
               <td className="text-end">
                 <Button
                   variant="outline-danger"
-                  onClick={() => removeFromBadList(i)}
+                  onClick={() => {
+                    if (
+                      window.confirm(
+                        "Are you sure you want to delete this task?"
+                      )
+                    )
+                      return removeFromBadList(i);
+                  }}
                 >
                   <i className="fa-solid fa-trash-can"></i>
                 </Button>{" "}
