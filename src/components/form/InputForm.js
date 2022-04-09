@@ -6,7 +6,7 @@ const initialState = {
   hr: "",
 };
 
-export const InputForm = ({ addToList }) => {
+export const InputForm = ({ addToTaskList }) => {
   const [newInfo, setNewInfo] = useState(initialState);
 
   const handleOnChange = (e) => {
@@ -23,7 +23,7 @@ export const InputForm = ({ addToList }) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    addToList(newInfo);
+    addToTaskList(newInfo);
   };
 
   return (
@@ -50,7 +50,7 @@ export const InputForm = ({ addToList }) => {
           </Col>
 
           <Col md={2}>
-            <Button variant="primary" type="submit">
+            <Button variant="outline-light" type="submit">
               Submit
             </Button>
           </Col>
