@@ -1,27 +1,48 @@
 import React from "react";
-import { Col, Row, Table } from "react-bootstrap";
-import { FormRow } from "../form/FormRow";
+import { Form, Table, Button } from "react-bootstrap";
 
-export const TaskList = ({ taskList }) => {
+export const TaskList = ({ taskList, removeFromTaskList, shiftToBadList }) => {
   console.log(taskList);
 
   return (
     <div>
-      <Row>
-        <Col md="6">
-          <h2 className="text-center">Task List</h2>
-          <hr />
-          <Table striped hover>
-            <tbody>
-              <FormRow taskList={taskList} />
-            </tbody>
-          </Table>
-        </Col>
+      <h2 className="text-center bg-warning">Task List</h2>
+      <hr />
+      <Table striped hover>
+        <tbody>
+          {taskList.map((item, i) => (
+            <tr className="bg-light" key={i}>
+              <td>
+                <Form.Check type="checkbox" label="" />
+              </td>
 
-        <Col md={6}>
-          <h2 className="text-center">Bad List</h2>
-        </Col>
-      </Row>
+              <td className="fs-4"> {item.task} </td>
+              <td className="fs-4">{item.hr} hr</td>
+              <td className="text-end">
+                <Button
+                  variant="outline-danger"
+                  onClick={() => {
+                    if (
+                      window.confirm(
+                        "Are you sure you want to delete this task?"
+                      )
+                    )
+                      return removeFromTaskList(i);
+                  }}
+                >
+                  <i className="fa-solid fa-trash-can"></i>
+                </Button>{" "}
+                <Button
+                  variant="outline-primary"
+                  onClick={() => shiftToBadList(i)}
+                >
+                  <i className="fa-solid fa-arrow-right"></i>
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </div>
   );
 };
