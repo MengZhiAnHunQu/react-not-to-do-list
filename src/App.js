@@ -16,7 +16,7 @@ const App = () => {
   //   return window.confirm("Are you sure you want to delete this task?");
   // };
 
-  // console.log(taskList);
+  console.log(taskList);
 
   //remove item from the task list
   const removeFromTaskList = (i) => {
